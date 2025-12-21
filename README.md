@@ -1,34 +1,27 @@
-A computer vision project that turns your webcam into a virtual canvas. Built with OpenCV and MediaPipe, this application tracks your hand landmarks to let you draw, erase, and change colors in mid-air.
 
-🌟 Features
-Gesture-Based Drawing: Use your index finger as a brush and two fingers to navigate.
+# Air Canvas: Virtual Drawing Board 🎨
 
-Virtual Palette: Select colors (Purple, Blue, Green, Yellow) or an Eraser from a menu at the top of the screen.
+### What It Is
+This is an augmented reality drawing tool that turns the air in front of you into a digital canvas. Using just your webcam and your fingers, you can draw, erase, and switch colors in real-time. It’s like having a touchscreen, but without the screen—you just wave your finger in the air to paint.
 
-Stabilization: Implements Exponential Moving Average (EMA) smoothing to ensure lines are clean and not jittery.
+### What Skills It Made Me Learn
+* **Signal Smoothing:** I learned how to use the Exponential Moving Average (EMA) algorithm to filter out the natural "jitter" of a webcam, turning shaky hand inputs into smooth, professional-looking curves.
+* **UI Masking:** I mastered the technique of overlaying digital graphics (like the color palette) onto a live video feed using bitwise masking operations.
+* **Coordinate Mapping:** I learned to translate the normalized coordinates from the AI model (0.0 to 1.0) into specific pixel locations (1920x1080) for accurate drawing.
 
-Smart UI: Toggle the color palette on/off by holding an open palm to keep your view clean.
+### How It Works
+1.  **Tracking:** The system tracks the tip of your index finger.
+2.  **Mode Switching:** It checks your hand configuration:
+    * **Index Finger Only:** Drawing Mode (creates a line).
+    * **Index + Middle Finger:** Selection Mode (moves the cursor without drawing).
+3.  **Drawing Engine:** As you move your finger, the code draws lines between your previous position and your current position on a black canvas.
+4.  **Compositing:** Finally, it merges the black canvas with your live webcam feed so it looks like the ink is floating in the air.
 
-🎮 Controls
-Gesture	Mode	Action
-Index Finger Up	(DRAW)	Draws on the canvas with the selected color.
-Index + Middle Up	(SELECT)	Moves the cursor without drawing. Use this to hover over the top menu to change colors.
-Open Palm (Hold 1s)	(TOGGLE)	Hides or shows the color palette.
-🛠️ Tech Stack
-Python 3.x
-
-OpenCV (cv2) - Image processing and canvas overlay.
-
-MediaPipe - Real-time hand landmark detection.
-
-NumPy - Handling image arrays and masks.
-
-🚀 How to Run
-Clone the repository:
-
-Bash
-git clone https://github.com/YOUR-USERNAME/air-canvas-cv.git
-Install dependencies:
+### If You Want To Use It, Here It Is
+**Clone the repository:**
+```bash
+git clone [https://github.com/heartlessisafk/air-canvas-cv.git](https://github.com/heartlessisafk/air-canvas-cv.git)
+Install the requirements:
 
 Bash
 pip install opencv-python mediapipe numpy
@@ -36,4 +29,11 @@ Run the application:
 
 Bash
 python air_canvas.py
-Tip: Ensure you have good lighting so the camera can detect your hand clearly. Press 'q' to quit.
+```
+Controls:
+
+☝️ Index Finger: Draw.
+
+✌️ Two Fingers: Hover/Select Colors.
+
+✋ Open Palm: Toggle Palette On/Off.
