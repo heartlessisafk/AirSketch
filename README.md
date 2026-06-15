@@ -21,7 +21,8 @@ This is an augmented reality drawing tool that turns the air in front of you int
 **Clone the repository:**
 ```bash
 git clone [https://github.com/heartlessisafk/air-canvas-cv.git](https://github.com/heartlessisafk/air-canvas-cv.git)
-Install the requirements:
+Install the requirement
+:
 
 Bash
 pip install opencv-python mediapipe numpy
